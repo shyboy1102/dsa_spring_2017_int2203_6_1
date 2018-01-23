@@ -39,3 +39,89 @@
 | 12   | [dsa12](Labs/w12_lab12.pdf)                                            |
 | 13   | [dsa13](Labs/w13_lab13.pdf)                                            |
 | 14   | [dsa14](Labs/w14_lab14.pdf)                                            |
+
+## Hướng dẫn sử dụng Git
+
+Xem thêm tại [đây](https://git-scm.com/book/vi/v1/B%E1%BA%AFt-%C4%90%E1%BA%A7u)
+
+### git clone
+
+Dùng để tải repo trên GitHub về máy, ví dụ:
+
+```
+git clone https://github.com/kienvu58/dsa_spring_2017_int2203_6_1.git
+```
+
+Sẽ có một thư mục `dsa_spring_2017_int2203_6_1` ở thư mục hiện tại.
+
+### git status
+
+Dùng để kiểm tra trạng thái của thư mục hiện thời, ví dụ:
+
+```
+cd dsa_spring_2017_int2203_6_1
+git status
+```
+
+Sẽ hiện ra là `working directory is clean...`.
+
+### git add
+
+Dùng để thêm các thay đổi vào stage, ví dụ:
+
+```
+notepad newfile.txt
+git status
+```
+
+Sẽ thấy có dòng `newfile.txt` màu đỏ.
+
+```
+git add newfile.txt
+git status
+``` 
+
+Sẽ thấy dòng `newfile newfile.txt` màu xanh.
+
+### git commit
+
+Dùng để commit các thay đổi, ví dụ:
+
+```
+git commit -m "add newfile.txt"
+git status
+```
+
+Sau khi `commit` gõ `git status` sẽ thấy `working directory is clean...`.
+
+### git config
+
+Dùng để thiết lập các cài đặt về git, ví dụ:
+
+```
+git config --global user.email "vtk5995@gmail.com"
+git config --global user.name "kienvu58"
+```
+
+### git push
+
+Đẩy những thay đổi đã `commit` lên trên GitHub.
+
+```
+git push origin master
+```
+
+### git pull
+
+Kéo những thay đổi từ GitHub về repo local.
+```
+git pull origin master
+```
+
+### git log
+
+Xem lịch sử các `commit`.
+
+```
+git log
+```
