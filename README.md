@@ -78,6 +78,7 @@ Sẽ thấy có dòng `newfile.txt` màu đỏ.
 
 ```
 git add newfile.txt
+git status
 ``` 
 
 Sẽ thấy dòng `newfile newfile.txt` màu xanh.
