@@ -4,6 +4,23 @@
 #include <vector>
 using namespace std;
  
+ void sort(vector<int> A)
+ {
+ 	int temp;
+ 	for(int i=0;i<A.size();i++)
+ 	{
+ 		for(int j=i+1;j<A.size();j++)
+ 		{
+ 			if(A[i]>A[j])
+ 			{
+ 				temp=A[j];
+ 				A[j]=A[i];
+ 				A[i]=temp;
+ 			}
+ 		}
+ 	}
+ }
+ 
 int main ()
 {
     
@@ -60,12 +77,12 @@ int main ()
 			   
 			   //Nhap so k
 			   int  k;
-			   
+			   sort(A);
 			   do{
 			   	cout<<"Nhap so k : ";
 			   	cin>>k;
 			   	
-			   	cout<<"So thu " << k<<" la :"<<A[k]<<endl;
+			   	cout<<"So lon thu " << k<<" la :"<<A[k]<<endl;
 			   	
 			   }
 			   while(k>A.size());
