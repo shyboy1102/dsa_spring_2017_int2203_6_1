@@ -23,22 +23,22 @@
 
 ## Bài thực hành
 
-| Tuần | Bài thực hành                                                          |
-|------|------------------------------------------------------------------------|
-| 01   | [dsa01](Labs/w01_lab01.pdf)                                            |
-| 02   | [dsa02](Labs/w02_lab02.pdf)                                            |
-| 03   | [dsa03](Labs/w03_lab03pdf)                                             |
-| 04   | [dsa04](Labs/w04_lab04.pdf)                                            |
-| 05   | [dsa05](Labs/w05_lab05.pdf)                                            |
-| 06   | [dsa06](Labs/w06_lab06.pdf), [strlist.h](Labs/strlist.h.pdf)           |
+| Tuần | Bài thực hành                            |
+| ---- | ---------------------------------------- |
+| 01   | [dsa01](Labs/w01_lab01.pdf)              |
+| 02   | [dsa02](Labs/w02_lab02.pdf)              |
+| 03   | [dsa03](Labs/w03_lab03pdf)               |
+| 04   | [dsa04](Labs/w04_lab04.pdf)              |
+| 05   | [dsa05](Labs/w05_lab05.pdf)              |
+| 06   | [dsa06](Labs/w06_lab06.pdf), [strlist.h](Labs/strlist.h.pdf) |
 | 07   | [dsa07](Labs/w07_lab07.pdf), [arrayqueue.cpp](Labs/arrayqueue.cpp.pdf) |
-| 08   | [dsa08](Labs/w08_lab08.pdf)                                            |
-| 09   | [dsa09](Labs/w09_lab09.pdf)                                            |
-| 10   | [dsa10](Labs/w10_lab10.pdf)                                            |
-| 11   | [dsa11](Labs/w11_lab11.pdf)                                            |
-| 12   | [dsa12](Labs/w12_lab12.pdf)                                            |
-| 13   | [dsa13](Labs/w13_lab13.pdf)                                            |
-| 14   | [dsa14](Labs/w14_lab14.pdf)                                            |
+| 08   | [dsa08](Labs/w08_lab08.pdf)              |
+| 09   | [dsa09](Labs/w09_lab09.pdf)              |
+| 10   | [dsa10](Labs/w10_lab10.pdf)              |
+| 11   | [dsa11](Labs/w11_lab11.pdf)              |
+| 12   | [dsa12](Labs/w12_lab12.pdf)              |
+| 13   | [dsa13](Labs/w13_lab13.pdf)              |
+| 14   | [dsa14](Labs/w14_lab14.pdf)              |
 
 ## Hướng dẫn sử dụng Git
 
@@ -79,7 +79,7 @@ Sẽ thấy có dòng `newfile.txt` màu đỏ.
 ```
 git add newfile.txt
 git status
-``` 
+```
 
 Sẽ thấy dòng `newfile newfile.txt` màu xanh.
 
@@ -125,3 +125,13 @@ Xem lịch sử các `commit`.
 ```
 git log
 ```
+
+### git remote add
+
+Thêm một repo để update.
+
+```
+git remote add upstream https://github.com/kienvu58/dsa_spring_2017_int2203_6_1
+git pull upstream master
+```
+
