@@ -43,16 +43,17 @@ void sort(int *arr);
 *******************************************************************************/
 int main()
 {
-    /* Read from file DAYSO1.txt and print to screen*/
-    ifstream file("DAYSO1.txt");
-    file >> n;
+    /* Read from fileIn DAYSO1.txt and print to screen*/
+    ifstream fileIn("DAYSO1.txt");
+    fileIn >> n;
     cout << "\n\t" << n << endl;
     int arr[n];
     for (int i = 0; i < n; i++)
     {
-        file >> arr[i];
+        fileIn >> arr[i];
         cout << "\t" << arr[i] << endl;
     }
+    fileIn.close();
 
     /* Sort array largest to smallest */
     sort(arr);

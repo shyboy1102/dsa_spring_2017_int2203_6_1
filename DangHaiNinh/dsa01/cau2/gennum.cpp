@@ -7,20 +7,20 @@ using namespace std;
 int main()
 {
 	/* Create file DAYSO1.txt*/
-    ofstream fileOut("DAYSO1.txt");
+    ofstream file("DAYSO2.txt");
 
     /* Randon n 1-100 */
     srand(time(NULL));
     int n = rand() % 100 +1;
 
-    cout << "\n\tWriting " << n << " numbers to DAYSO1.txt" << endl;
+    cout << "\n\tWriting " << n << " numbers to DAYSO2.txt" << endl;
 
     /* Print to DAYSO1.txt */
-    fileOut << n << endl;
+//    file << n << endl;
     for (int i = 0; i < n; i++)
     {
-    	int num = rand();
-        fileOut << num << endl;
+    	int num = rand() % 10000 + 1;
+        file << num << endl;
     }
     cout << "\tDone!" << endl;
 
