@@ -53,7 +53,7 @@ Pair getMinMax(int arr[], int n)
       if (arr[i] < minmax.min)          
         minmax.min = arr[i];        
     }        
-    i += 2; 
+    i =i+ 2; 
   }            
  
   return minmax;
