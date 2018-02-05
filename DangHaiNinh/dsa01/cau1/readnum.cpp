@@ -43,7 +43,7 @@ void sort(int *arr);
 *******************************************************************************/
 int main()
 {
-    /* Read from fileIn DAYSO1.txt and print to screen*/
+    /* Read from file DAYSO1.txt and print to screen*/
     ifstream fileIn("DAYSO1.txt");
     fileIn >> n;
     cout << "\n\t" << n << endl;
