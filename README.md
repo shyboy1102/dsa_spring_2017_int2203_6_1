@@ -27,7 +27,7 @@
 | ---- | ---------------------------------------- |
 | 01   | [dsa01](Labs/w01_lab01.pdf)              |
 | 02   | [dsa02](Labs/w02_lab02.pdf)              |
-| 03   | [dsa03](Labs/w03_lab03pdf)               |
+| 03   | [dsa03](Labs/w03_lab03.pdf)              |
 | 04   | [dsa04](Labs/w04_lab04.pdf)              |
 | 05   | [dsa05](Labs/w05_lab05.pdf)              |
 | 06   | [dsa06](Labs/w06_lab06.pdf), [strlist.h](Labs/strlist.h.pdf) |
