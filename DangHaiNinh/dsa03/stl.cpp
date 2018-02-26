@@ -67,7 +67,7 @@ int element(list<int> L, int pos);
  *
  * @param:
  *          < - list<int> &L: list want to insert
- *            - pos: The position in front of the added element
+ *            - pos: the position in front of the added element
  *            - val: value of element >.
  *
  * @return:
@@ -90,7 +90,7 @@ void insert(list<int> &L, int pos, int val);
 void append(list<int> &L, int val);
 
 /*!
- * Function: {void} del(list<int> &L, int pos);
+ * Function: {void} del(list<int> &L, int pos)
  * @brief:
  *          <delete element of list>.
  *
@@ -103,62 +103,64 @@ void append(list<int> &L, int val);
  */
 void del(list<int> &L, int pos);
 
-
+/*******************************************************************************
+* CODE
+*******************************************************************************/
 int main()
 {
-	/* Creat list */
-	list<int> A;
-	int i;
-	for (int i = 1; i < 4; i++)
-	{
-		A.push_back(i);
-	}
-	for (int i = 3; i < 6; i++)
-	{
-		A.push_back(i);
-	}
+    /* Creat list */
+    list<int> A;
+    int i;
+    for (int i = 1; i < 4; i++)
+    {
+        A.push_back(i);
+    }
+    for (int i = 3; i < 6; i++)
+    {
+        A.push_back(i);
+    }
 
-	cout << "\n\tA = ";
-	printList(A);
+    cout << "\n\tA = ";
+    printList(A);
 
-	/* empty(A) */
-	if (empty(A))
-	{
-		cout << "\n\tempty(A) -> true" << endl;
-	}
-	else
-	{
-		cout << "\n\tempty(A) -> false" << endl;
-	}
+    /* empty(A) */
+    if (empty(A))
+    {
+        cout << "\n\tempty(A) -> true" << endl;
+    }
+    else
+    {
+        cout << "\n\tempty(A) -> false" << endl;
+    }
 
-	/* length(A) */
-	cout << "\n\tlength(A) -> " << length(A) << endl;
+    /* length(A) */
+    cout << "\n\tlength(A) -> " << length(A) << endl;
 
-	/* element */
-	cout << "\n\telement(A, 0) -> " << element(A, 0) << endl;
-	cout << "\telement(A, 2) -> " << element(A, 2) << endl;
+    /* element */
+    cout << "\n\telement(A, 0) -> " << element(A, 0) << endl;
+    cout << "\telement(A, 2) -> " << element(A, 2) << endl;
 
-	/* insert */
-	cout << "\n\tinsert(A, 2, 10) -> ";
-	insert(A, 2, 10);
-	printList(A);
-	cout << endl;
+    /* insert */
+    cout << "\n\tinsert(A, 2, 10) -> ";
+    insert(A, 2, 10);
+    printList(A);
+    cout << endl;
 
-	/* append */
-	cout << "\n\tappend(A, -5) -> ";
-	append(A, -5);
-	printList(A);
-	cout << endl;
+    /* append */
+    cout << "\n\tappend(A, -5) -> ";
+    append(A, -5);
+    printList(A);
+    cout << endl;
 
-	/* del */
-	cout << "\n\tdel(A, 3) -> ";
-	del(A, 3);
-	printList(A);
+    /* del */
+    cout << "\n\tdel(A, 3) -> ";
+    del(A, 3);
+    printList(A);
 
-	cout << "\n\tdel(A, 1) -> ";
-	del(A, 1);
-	printList(A);
-	cout << endl;
+    cout << "\n\tdel(A, 1) -> ";
+    del(A, 1);
+    printList(A);
+    cout << endl;
 }
 
 /*!
@@ -174,11 +176,11 @@ int main()
  */
 void printList(list<int> L)
 {
-	list<int>::iterator pos = L.begin();
-	for(pos = L.begin(); pos != L.end(); pos++)
-	{
-		cout << *pos << ' ';
-	}
+    list<int>::iterator pos = L.begin();
+    for(pos = L.begin(); pos != L.end(); pos++)
+    {
+        cout << *pos << ' ';
+    }
 }
 
 /*!
@@ -194,7 +196,7 @@ void printList(list<int> L)
  */
 int length(list<int> L)
 {
-	return L.size();
+    return L.size();
 }
 
 /*!
@@ -211,7 +213,7 @@ int length(list<int> L)
  */
 int empty(list<int> L)
 {
-	return L.empty();
+    return L.empty();
 }
 
 /*!
@@ -228,12 +230,12 @@ int empty(list<int> L)
  */
 int element(list<int> L, int pos)
 {
-	list<int>::iterator position = L.begin();
-	for (int i = 0; i < pos; i++)
-	{
-		position++;
-	}
-	return *position;
+    list<int>::iterator position = L.begin();
+    for (int i = 0; i < pos; i++)
+    {
+        position++;
+    }
+    return *position;
 }
 
 /*!
@@ -251,12 +253,12 @@ int element(list<int> L, int pos)
  */
 void insert(list<int> &L, int pos, int val)
 {
-	list<int>::iterator position = L.begin();
-	for (int i = 0; i < pos; i++)
-	{
-		position++;
-	}
-	L.insert(position, val);
+    list<int>::iterator position = L.begin();
+    for (int i = 0; i < pos; i++)
+    {
+        position++;
+    }
+    L.insert(position, val);
 }
 
 /*!
@@ -273,12 +275,12 @@ void insert(list<int> &L, int pos, int val)
  */
 void append(list<int> &L, int val)
 {
-	L.insert(L.end(), val);
+    L.insert(L.end(), val);
 }
 
 
 /*!
- * Function: {void} del(list<int> &L, int pos);
+ * Function: {void} del(list<int> &L, int pos)
  * @brief:
  *          <delete element of list>.
  *
@@ -291,10 +293,10 @@ void append(list<int> &L, int val)
  */
 void del(list<int> &L, int pos)
 {
-	list<int>::iterator position = L.begin();
-	for (int i = 0; i < pos; i++)
-	{
-		position++;
-	}
-	L.erase(position);
+    list<int>::iterator position = L.begin();
+    for (int i = 0; i < pos; i++)
+    {
+        position++;
+    }
+    L.erase(position);
 }
