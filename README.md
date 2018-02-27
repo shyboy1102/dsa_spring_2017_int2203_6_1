@@ -40,6 +40,10 @@
 | 13   | [dsa13](Labs/w13_lab13.pdf)              |
 | 14   | [dsa14](Labs/w14_lab14.pdf)              |
 
+## Tự học C++
+
+Vào trang [CodePower](https://codepower.vn/).
+
 ## Hướng dẫn sử dụng Git
 
 Xem thêm tại [đây](https://git-scm.com/book/vi/v1/B%E1%BA%AFt-%C4%90%E1%BA%A7u)
