@@ -15,12 +15,12 @@ public:
     int current;
 
     /* Functions */
-    const DArrayList& operator=(const DArrayList &DS)
+    const DArrayList& operator=(const DArrayList &list)
     {
-        this->size = DS.size;
+        this->size = list.size;
         for(int i = 0; i < size; i++) 
         {
-            *(this->element + i) = *(DS.element + i);
+            *(this->element + i) = *(list.element + i);
         }
         return *this;
     }
