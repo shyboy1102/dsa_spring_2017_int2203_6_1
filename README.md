@@ -139,3 +139,6 @@ git remote add upstream https://github.com/kienvu58/dsa_spring_2017_int2203_6_1
 git pull upstream master
 ```
 
+## Sách
+
+[Introduction to Algorithms - CLRS](http://ressources.unisciel.fr/algoprog/s00aaroot/aa00module1/res/%5BCormen-AL2011%5DIntroduction_To_Algorithms-A3.pdf)
