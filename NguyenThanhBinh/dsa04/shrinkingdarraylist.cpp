@@ -4,6 +4,7 @@ class DArrayList{
     protected:
         int last,size;
         int  *element;
+
     public:
         DArrayList(){
             element=NULL;
