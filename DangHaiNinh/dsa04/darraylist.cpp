@@ -7,7 +7,7 @@ class DArrayList
 {
 public:
     /* Initialization of the empty list */
-    ArrayList();
+    DArrayList();
 
     /* List properties */
     int size;
@@ -15,21 +15,101 @@ public:
     int current;
 
     /* Functions */
-    const DArrayList& operator=(const DArrayList &DS)
-    {
-        this->size = DS.size;
-        for(int i = 0; i < size; i++) 
-        {
-            *(this->element + i) = *(DS.element + i);
-        }
-        return *this;
-    }
+
+    /* Define operator "=" for creat new list from list already */
+    const DArrayList& operator=(const DArrayList &list);
+
+    /*!
+     * Function: {bool} empty() const
+     * @brief:
+     *          <check list created at DArrayList() empty or not>.
+     *
+     * @param:
+     *          <none>.
+     *
+     * @return:
+     *          < true if list empty
+     *            false if list not empty >.
+     */
     bool empty() const;
+
+    /*!
+     * Function: {void} insert(const int x, int i)
+     * @brief:
+     *          <insert element to list created at DArrayList()>.
+     *
+     * @param:
+     *          <- x: value of element
+     *           - i: the position in front of the added element >.
+     *
+     * @return:
+     *          <none>.
+     */
     void insert(const int x, int i);
+
+    /*!
+     * Function: {void} append(const int x)
+     * @brief:
+     *          <insert element to the end of list created at DArrayList()>.
+     *
+     * @param:
+     *          <x: value of element>.
+     *
+     * @return:
+     *          <none>.
+     */
     void append(const int x);
+
+    /*!
+     * Function: {void} erase(int i)
+     * @brief:
+     *          <delete element of list created at DArrayList()>.
+     *
+     * @param:
+     *          <i: the position of element>.
+     *
+     * @return:
+     *          <none>.
+     */
     void erase(int i);
+
+    /*!
+     * Function: {int&} at(int i) const
+     * @brief:
+     *          <returns a reference to the element>.
+     *
+     * @param:
+     *          <i: the position of the element>.
+     *
+     * @return:
+     *          <reference to the element>.
+     */
     int& at(int i) const;
+
+    /*!
+     * Function: {void} printList()
+     * @brief:
+     *          <print list to display>.
+     *
+     * @param:
+     *          <none>.
+     *
+     * @return:
+     *          <none>.
+     */
     void print() const;
+
+    /*!
+     * Function: {void} listDel()
+     * @brief:
+     *          <delete all element of list created at DArrayList()>.
+     *
+     * @param:
+     *          <none>.
+     *
+     * @return:
+     *          <none>.
+     */
     void listDel();
 };
 
@@ -49,6 +129,11 @@ int main()
     A.print();
     cout << endl;
 
+    /* Creat list B = A */
+    DArrayList B = A;
+    cout << "\n\tB = A = ";
+    B.print();
+    cout << endl;
 
     /* empty */
     if (A.empty())
@@ -92,16 +177,27 @@ int main()
     return 0;
 }
 
-DArrayList::ArrayList()
+DArrayList::DArrayList()
 {
     size = 0;
     current =  0;
 }
 
+/* Define operator "=" for creat new list from list already */
+const DArrayList& DArrayList::operator=(const DArrayList &list)
+{
+    this->size = list.size;
+    for(int i = 0; i < size; i++) 
+    {
+        *(this->element + i) = *(list.element + i);
+    }
+    return *this;
+}
+
 /*!
  * Function: {bool} empty() const
  * @brief:
- *          <check list created at ArrayList() empty or not>.
+ *          <check list created at DArrayList() empty or not>.
  *
  * @param:
  *          <none>.
@@ -118,7 +214,7 @@ bool DArrayList::empty() const
 /*!
  * Function: {void} insert(const int x, int i)
  * @brief:
- *          <insert element to list created at ArrayList()>.
+ *          <insert element to list created at DArrayList()>.
  *
  * @param:
  *          <- x: value of element
@@ -136,25 +232,23 @@ void DArrayList::insert(const int x, int i)
         *(tmp + j) = *(element + j);
 
     }
+
     *(tmp + i) = x;
+
     for(int j = i + 1; j < size; j++)
     {
         *(tmp + j) = *(element + (j - 1));
     }
+
     delete[] element;
     element = tmp;
-//     for (int j = size - 1; j > i; j--)
-//     {
-//         *(element + j) = *(element + (j - 1));
-//     }
-//     *(element + i) = x;
 }
 
 
 /*!
  * Function: {void} append(const int x)
  * @brief:
- *          <insert element to the end of list created at ArrayList()>.
+ *          <insert element to the end of list created at DArrayList()>.
  *
  * @param:
  *          <x: value of element>.
@@ -209,7 +303,7 @@ int& DArrayList::at(int i) const
 /*!
  * Function: {void} erase(int i)
  * @brief:
- *          <delete element of list created at ArrayList()>.
+ *          <delete element of list created at DArrayList()>.
  *
  * @param:
  *          <i: the position of element>.
@@ -226,6 +320,17 @@ void DArrayList::erase(int i)
     size--;
 }
 
+/*!
+ * Function: {void} listDel()
+ * @brief:
+ *          <delete all element of list created at DArrayList()>.
+ *
+ * @param:
+ *          <none>.
+ *
+ * @return:
+ *          <none>.
+ */
 void DArrayList::listDel()
 {
     delete[] element;
