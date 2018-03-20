@@ -142,3 +142,4 @@ git pull upstream master
 ## Sách
 
 [Introduction to Algorithms - CLRS](http://ressources.unisciel.fr/algoprog/s00aaroot/aa00module1/res/%5BCormen-AL2011%5DIntroduction_To_Algorithms-A3.pdf)
+[DSAP](https://kytstech.blogspot.com/2016/09/dsap-textbook.html)
