@@ -35,13 +35,13 @@ int main(){
     c2.b = -4;
 
     c3 = c1.add(c1,c2);
-    cout << "cong" << endl << c3.a << "  " << c3.b << endl;
+    cout << "cong: " << c3.a << " + " << c3.b << "i" << endl;
 
     c3 = c1.sub(c1,c2);
-    cout << "tru" << endl << c3.a << "  " << c3.b << endl;
+    cout << "tru:  " << c3.a << " + " << c3.b << "i" << endl;
 
     c3 = c1.mul(c1,c2);
-    cout << "nhan" << endl << c3.a << "  " << c3.b << endl;
+    cout << "nhan: " << c3.a << " + " << c3.b << "i" << endl;
 
     return 0;
 }

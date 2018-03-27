@@ -26,7 +26,7 @@ int main()
         f2 << a[i] << endl;
     }
     f2.close();
-    cout << "xong";
+    cout << "\nxong" << endl;
 
 	return 0;
 }

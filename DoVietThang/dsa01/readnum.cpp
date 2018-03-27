@@ -24,11 +24,14 @@ int main()
             }
         }
     int k;
-    cout << " Nhap k:";
-    cin >> k;
+    do{
+        cout << "Nhap k = ";
+        cin >> k;
+    }
+    while(k<=0);
     cout << "So lon nhat: " << ar[n-1] << endl;
     cout << "So lon thu 2: " << ar[n-2] << endl;
-    cout << "So lon thu k: " << ar[n - k];
+    cout << "So lon thu k = " << k << ": " << ar[n - k];
 
 	return 0;
 }

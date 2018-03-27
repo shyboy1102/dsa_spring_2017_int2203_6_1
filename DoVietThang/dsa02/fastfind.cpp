@@ -25,6 +25,6 @@ int main(){
         while (a[i][j+1] == 1 && j < n) j++;
         if (j == n) break;
     }
-    cout << "hang can tim la hang thu " << x+1;
+    cout << "Hang co nhieu so 1 nhat:  " << x+1 << endl;
     return 0;
 }

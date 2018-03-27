@@ -5,8 +5,10 @@ using namespace std;
 int main(){
     unsigned int n;
     float x,t,s;
-    cout << "nhap lan luot x va n:" << endl;
-    cin >> x >> n;
+    cout << "Nhap co so x = ";
+    cin >> x;
+    cout << "Nhap so mu n = ";
+    cin >> n;
 
     int i = 0;
     int a[100];

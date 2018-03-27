@@ -17,12 +17,12 @@ int main()
     int n = i + 1;
 
     f.close();
-    cout << "xong" << endl << n;
+    cout << "xong" << endl << "n = " << n << endl;
 
     ofstream f2;
     f2.open("KETQUA2.txt");
     int k;
-    cout << "nhap k:";
+    cout << "nhap k: ";
     cin >> k;
     for (int i = k; i < n; i++){
         f2 << a[i] << endl;
