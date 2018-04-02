@@ -62,7 +62,7 @@ class DArrayList{
 					p[i]=x;
 					last++;
 					for(int j=i+1;j<=last;j++){
-						p[j]=element[j=1];
+						p[j]=element[j+1];
 					}
 					delete[] element;
 					element=p;
