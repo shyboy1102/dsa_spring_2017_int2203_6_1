@@ -118,7 +118,8 @@ int main()
 
     /* A + B */
     cout << "\n\tA + B: ";
-    StringSet C = A;
+    StringSet C;
+    C = A;
     C.operator+(B);
     C.output();
     cout << endl;
@@ -353,7 +354,11 @@ StringSet& StringSet::operator=(const StringSet& asset)
 {
     capacity = asset.capacity;
     last = asset.last;
-    element = asset.element;
+    element = new string[capacity];
+    for (int i = 0; i <= last; i++)
+    {
+        element[i] = asset.element[i];
+    }
     return *this;
 }
 
