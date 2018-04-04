@@ -79,13 +79,9 @@ void ArrayQueue::print(){
 void ArrayQueue::enqueue(int x) {
     if(isFull()) {
         capacity *= 2;
-		element[r] = x;
-		r = (r+1) % capacity;
     }
-    else {
-        element[r] = x;
-        r = (r + 1) % capacity;
-    }
+    element[r] = x;
+    r = (r+1) % capacity;
 }
 
 int ArrayQueue::dequeue() throw (EmptyQueueException) {
@@ -95,7 +91,7 @@ int ArrayQueue::dequeue() throw (EmptyQueueException) {
     else {
         int x = element[f];
         f = (f + 1) % capacity;
-        return f;
+        return x;
     }
 }
 

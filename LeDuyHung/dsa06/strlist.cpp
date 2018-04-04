@@ -68,17 +68,14 @@ const string& StringLinkedList::last() const {
 }
 
 void StringLinkedList::addLast(const string & e) {
-	if(empty()) {
-		StringNode * q = new StringNode();
-		q->data = e;
-		q->next = NULL;
-		tail = q;
-		head = tail;
-	}
+    StringNode * q = new StringNode();
+    q->data = e;
+    q->next = NULL;
+    if(empty()) {
+        tail = q;
+        head = tail;
+    }
 	else{
-		StringNode * q = new StringNode();
-		q->data = e;
-		q->next = NULL;
 		tail->next = q;
 		tail = q;
 	}

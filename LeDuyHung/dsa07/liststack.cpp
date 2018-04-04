@@ -58,7 +58,7 @@ private:
 
     int ListStack::pop() {
         if(!empty()) {
-            n --;
+            n--;
             Node * q = S;
             int x = q->data;
             q = q->next;
@@ -81,7 +81,7 @@ private:
     string ListStack::decimalToBinary(int n) {
         ListStack temp;
         while(n) {
-            temp.push(n%2);
+            temp.push(n % 2);
             n /= 2;
         }
         return temp.toString();
