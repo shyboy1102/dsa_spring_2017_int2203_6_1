@@ -43,27 +43,20 @@ private:
     }
 
     void ListStack::push(int e) {
-        Node * q = new Node();
+        Node* q = new Node;
         q->data = e;
-        q->next = NULL;
-        if(empty()) {
-            S = q;
-        }
-        else {
-            q->next = S;
-            S = q;
-        }
-        n++;
+        q->next = S;
+        S = q;
+        ++n;
     }
 
     int ListStack::pop() {
         if(!empty()) {
-            n--;
-            Node * q = S;
+            Node* q = S;
+            S = S->next;
             int x = q->data;
-            q = q->next;
-            delete S;
-            S = q;
+            delete(q);
+            --n;
             return x;
         }
     }
@@ -91,6 +84,7 @@ int main() {
     ListStack myls;
     myls.push(3);
     myls.push(5);
+    myls.push(15);
 
     cout << (myls.empty()? "true" : "false") << endl;
 
@@ -100,7 +94,7 @@ int main() {
 
     cout << myls.size() << endl;
 
-    int x = 9;
+    int x = 10;
     cout << x << " = " << myls.decimalToBinary(x) << endl;
     return 0;
 }
