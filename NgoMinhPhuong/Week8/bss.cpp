@@ -1,450 +1,261 @@
-
 #include<bits/stdc++.h>
 
 using namespace std;
 
-
 struct Node{
-
     string data;
     Node* left;
     Node* right;
+    Node* parent;
+} ;
 
-    Node(const string tmp){
-        this->data = tmp;
-        this->left = NULL;
-        this->right = NULL;
-    }
-
-
-};
-
-
-
-
-class BstStringSet {
+class BstStringSet{
 public:
     BstStringSet();
     ~BstStringSet();
-    BstStringSet(char * fileName);
-    bool find(const string & x );
-    void erase (const string & x);
-    void insert (const string & x);
+    BstStringSet(char* filename);
+    void insert(const string& x);
+    bool find(const string& x) const;
+    void erase(const string& x);
+    void erase(Node* tmp);
+    Node* leftMost(Node* tmp)const;
+    void printInorder() const;
+    void visit(Node* tmp)const;
     string min() const;
-    string max () const;
-    string predeeessor (const string & x) const ;
-    string successor (const string & x) const ;
-    void printInorder()const;
-    void inOrder(Node* tmp) const;
-    Node* deleteNode(Node* root ,Node* left , Node* right);
-
+    string max() const;
+    string predecessor(const string& x) const;
+    string successor(const string& x) const;
 
 private:
     Node* root;
 
 };
 
-Node* BstStringSet::deleteNode(Node* root , Node* left ,Node* right){
-
-
-    if(root!=NULL){
-        return root;
-    }
-    else {
-        if(right==NULL){
-             root = deleteNode(left , left->left,left->right);
+string BstStringSet::predecessor(const string& x) const{
+    Node* tmp = root;
+    while(tmp!=NULL){
+        if(tmp->data.compare(x)==0){
+            if(tmp->left!=NULL){
+                return tmp->left->data;
+            }
+            else{
+                return NULL;
+            }
         }
-        else if(left==NULL){
-            root = deleteNode(left , right->left,right->right);
+        if(x.compare(tmp->data) < 0){
+            tmp = tmp->left;
         }
-        else if(right==NULL&&left==NULL){
-
-                Node* tmp = root;
-                root = NULL;
-                return tmp;
+        else {
+            tmp = tmp->right;
         }
     }
-
-
-
+}
+string BstStringSet::successor(const string& x) const{
+    Node* tmp = root;
+    while(tmp!=NULL){
+        if(tmp->data.compare(x)==0){
+            if(tmp->right!=NULL){
+                Node* x = leftMost(tmp->right);
+                return x->data;
+            }
+            else{
+                Node* y = tmp->parent;
+                while(y != NULL &&  tmp == y->right){
+                    tmp = y;
+                    y = y->parent;
+                }
+                return y->data;
+            }
+        }
+        if(x.compare(tmp->data) < 0){
+            tmp = tmp->left;
+        }
+        else {
+            tmp = tmp->right;
+        }
+    }
 }
 
-void BstStringSet::inOrder(Node* tmp)const{
 
-
-    if(tmp!=NULL){
-        if(tmp->left!=NULL){
-            inOrder(tmp->left);
-            cout << tmp->data << endl;
-            if(tmp->right!=NULL){
-                inOrder(tmp->right);
-            }
-        }
-        else{
-            cout << tmp->data << endl;
-            if(tmp->right!=NULL){
-                inOrder(tmp->right);
-            }
-        }
+string BstStringSet::min()const{
+    Node* tmp = root;
+    while(tmp->left!=NULL){
+        tmp = tmp->left;
     }
+    return tmp->data;
+}
+
+string BstStringSet::max()const{
+    Node* tmp = root;
+    while(tmp->right!=NULL){
+        tmp = tmp->right;
+    }
+    return tmp->data;
+}
+
+void BstStringSet::visit(Node* tmp) const{
+    if(tmp==NULL)
+        return;
+
+    cout << tmp->data<<endl;
+    visit(tmp->left);
+    visit(tmp->right);
+}
+void BstStringSet::printInorder()const{
+
+    visit(root);
 
 }
 
 BstStringSet::BstStringSet(){
-
     this->root = NULL;
 }
 
-BstStringSet::BstStringSet(char* fileName){
-
-    ifstream readFile;
-
-    root = NULL;
-
-    readFile.open(fileName);
-
-    if(readFile.is_open()){
-
-        while(!readFile.eof()){
-
-                string tmp2;
-                readFile >> tmp2;
-                insert(tmp2);
-
-        }
-
-        readFile.close();
-
-    }
-
-
-
-
-
+BstStringSet::~BstStringSet(){
+    delete this->root;
 }
 
-
-
-void BstStringSet::erase(const string & x){
-
-    if(find(x)){
-
-
-            Node* tmp = root;
-
-            bool isDone = false;
-
-            if(tmp==NULL){
-
-
-                return;
-            }
-
-        while(!isDone){
-
-
-            if(tmp!=NULL){
-
-                if(tmp->data.compare(x)==0){
-
-                    tmp = NULL;
-                    tmp = deleteNode(tmp , tmp->left , tmp->right);
-                    return;
-
-                }
-                else if(tmp->data.compare(x)>0){
-                    if(tmp->left!=NULL){
-                        if(tmp->left->data.compare(x)==0){
-                            tmp->left = deleteNode(tmp->left,tmp->left->left , tmp->left->right);
-                            return;
-                        }
-                        tmp = tmp->left;
-                        continue;
-                    }
-                }
-                else if(tmp->right!=NULL){
-                        if(tmp->right->data.compare(x)==0){
-                            tmp->right = deleteNode(tmp->right , tmp->right->left,tmp->right->left);
-                            return;
-                        }
-
-                        tmp = tmp->right;
-                        continue;
-                    }
-            }
-
-        }
-
+Node* BstStringSet::leftMost(Node* tmp)const{
+    while(tmp->left!=NULL){
+        tmp = tmp->left;
     }
-
+    return tmp;
 }
 
-bool BstStringSet::find(const string& x){
-
+void BstStringSet::erase(const string& x){
     Node* tmp = root;
+    while(tmp!=NULL){
+        if(tmp->data.compare(x)==0){
+            erase(tmp);
+        }
+        if(x.compare(tmp->data) < 0){
+            tmp = tmp->left;
+        }
+        else {
+            tmp = tmp->right;
+        }
+    }
+}
 
-    bool isDone = false;
-
-    if(tmp==NULL){
-
-
-                return false;
+void BstStringSet::erase(Node* tmp){
+    if(tmp->right == NULL && tmp->left == NULL){
+        if(tmp->parent==NULL){
+                root = NULL;
+                return;
+        }
+        if(tmp->parent->left==tmp){
+            tmp->parent->left = NULL;
+            delete tmp;
+        }
+        else{
+            tmp->parent->right = NULL;
+            delete tmp;
+        }
+        return;
     }
 
-    while(!isDone){
-
-
-            if(tmp!=NULL){
-
-                if(tmp->data.compare(x)==0){
-
-                    return true;
-
-                }
-                else if(tmp->data.compare(x)>0){
-                    if(tmp->left!=NULL){
-                        if(tmp->left->data.compare(x)==0){
-                            return true;
-                        }
-                        tmp = tmp->left;
-                        continue;
-                    }
-                    else{
-                        return false;
-                    }
-                }
-                else if(tmp->right!=NULL){
-                        if(tmp->right->data.compare(x)==0){
-                            return true;
-                        }
-
-                        tmp = tmp->right;
-                        continue;
-                    }
-                    else{
-                        return false;
-                    }
-            }
-
+    if(tmp->right!=NULL&&tmp->right!=NULL){
+        Node* tmp2 = leftMost(tmp->right);
+        tmp->data = tmp2->data;
+        if(tmp2->parent->left == tmp2){
+            tmp2->parent->left = NULL;
+            delete tmp2;
+        }else{
+            tmp2->parent->right = NULL;
+            delete tmp2;
+        }
+        return;
     }
 
+    if(tmp->right!=NULL){
+        tmp = tmp->right;
+        return;
+    }
+    else{
+        tmp = tmp->left;
+        return;
+    }
+
+
+
+}
+
+bool BstStringSet::find(const string & x) const{
+    Node* tmp = root;
+    while(tmp!=NULL){
+        if(tmp->data.compare(x)==0){
+            return true;
+        }
+        if(x.compare(tmp->data) < 0){
+            tmp = tmp->left;
+        }
+        else {
+            tmp = tmp->right;
+        }
+    }
     return false;
-
 }
-//
+
+BstStringSet::BstStringSet(char* filename){
+
+    this->root = NULL;
+
+    ifstream myfile ;
+    myfile.open(filename);
+
+    if(myfile.is_open()){
+        while(!myfile.eof()){
+            string tmp;
+            myfile >> tmp;
+            this->insert(tmp);
+        }
+    }
+}
+
 void BstStringSet::insert(const string& x){
-
+    Node* newNode = new Node();
+    newNode->data = x;
+    newNode->left  = NULL;
+    newNode->right  = NULL;
+    newNode->parent = NULL;
     Node* tmp = root;
-
-    bool isDone = false;
-
-    if(tmp==NULL){
-
-                tmp = new Node(x);
-                this->root = tmp;
-                return;
-            }
-
-    while(!isDone){
-
-
-            if(tmp!=NULL){
-
-                if(tmp->data.compare(x)==0){
-                    cout << "existed!"<< endl;
-                    return;
-                }
-                else if(tmp->data.compare(x)>0){
-                    if(tmp->left!=NULL){
-                        tmp = tmp->left;
-                        continue;
-                    }
-                    else{
-                        tmp->left = new Node(x);
-                        return;
-                    }
-                }
-                else if(tmp->right!=NULL){
-                        tmp = tmp->right;
-                        continue;
-                    }
-                    else{
-                        tmp->right = new Node(x);
-                        return;
-                    }
-            }
-
+    if(tmp == NULL){
+            this->root = newNode;
+            return;
     }
 
+    while(tmp!=NULL){
 
-
-}
-
-
-
-
-
-string BstStringSet::max()const{
-
-        Node* tmp = root;
-        if(tmp==NULL){
-            return "empty!!!!!!!!!!!!";
-        }
-        while(true){
-            if(tmp->right!=NULL){
-                tmp = tmp->right;
-            }
-            else{
-                return tmp->data;
-            }
-        }
-
-}
-//
-//
-string BstStringSet::min()const{
-
-         Node* tmp = root;
-        if(tmp==NULL){
-            return "empty!!!!!!!!!!!!";
-        }
-        while(true){
+        if(x.compare(tmp->data) < 0){
             if(tmp->left!=NULL){
                 tmp = tmp->left;
+            } else{
+                tmp->left = newNode;
+                newNode->parent = tmp;
+                return;
             }
-            else{
-                return tmp->data;
+        }
+        else {
+            if(tmp->right!=NULL){
+                tmp = tmp->right;
+            } else{
+                tmp->right = newNode;
+                newNode->parent = tmp;
+                return;
             }
         }
 
-}
-
-string BstStringSet::predeeessor(const string& x)const{
-
-    Node* tmp = root;
-
-    bool isDone = false;
-
-    if(tmp==NULL){
-
-
-                return "empty!";
-    }
-
-    while(!isDone){
-
-
-            if(tmp!=NULL){
-
-                if(tmp->data.compare(x)==0){
-
-                    return tmp->left->data;
-
-                }
-                else if(tmp->data.compare(x)>0){
-                    if(tmp->left!=NULL){
-                        if(tmp->left->data.compare(x)==0){
-                            return tmp->left->left->data;
-                        }
-                        tmp = tmp->left;
-                        continue;
-                    }
-                }
-                else if(tmp->right!=NULL){
-                        if(tmp->right->data.compare(x)==0){
-                            return tmp->data;
-                        }
-
-                        tmp = tmp->right;
-                        continue;
-                    }
-            }
 
     }
+}
 
+int main(){
+    BstStringSet a = BstStringSet("test.txt");
+    a.printInorder();
+    cout <<a.find("f");
+    a.erase("a");
+    a.printInorder();
 }
 
 
 
-void BstStringSet::printInorder()const{
-
-   inOrder(root);
-
-
-}
-
-string BstStringSet::successor(const string& x)const{
-    Node* tmp = root;
-
-    bool isDone = false;
-
-    if(tmp==NULL){
-
-
-                return "empty!";
-    }
-
-    while(!isDone){
-
-
-            if(tmp!=NULL){
-
-                if(tmp->data.compare(x)==0){
-
-                    return tmp->right->data;
-
-                }
-                else if(tmp->data.compare(x)>0){
-                    if(tmp->left!=NULL){
-                        if(tmp->left->data.compare(x)==0){
-                            return tmp->data;
-                        }
-                        tmp = tmp->left;
-                        continue;
-                    }
-                }
-                else if(tmp->right!=NULL){
-                        if(tmp->right->data.compare(x)==0){
-                            return tmp->right->right->data;
-                        }
-
-                        tmp = tmp->right;
-                        continue;
-                    }
-            }
-
-    }
-
-
-}
-
-//BstStringSet::~BstStringSet(){
-//
-//    delete this->root;
-//
-//}
-
-
-
-
-
-
-
-
-
-
-int main (){
-
-    BstStringSet* a = new BstStringSet();
-
-    a -> insert("asd");
-    a->insert("a");
-    a->insert("b");
-    a->insert("as");
-
-    a->printInorder();
-    a->erase("b");
-    //a->printInorder();
-
-    return 0;
-}
