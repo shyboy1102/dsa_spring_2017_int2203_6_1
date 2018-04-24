@@ -5,16 +5,30 @@ using namespace std;
 
 int main()
 {
-    fstream f("strList.txt");
-    f << "da" << endl << "zs";
-    f.close();
-
     StringLinkedList L("strList.txt");
-    string s = "df";
-    L.addFirst(s);
+    cout << "L: " << endl;
     L.print();
-    L.removeFirst();
-    cout << L.first();
 
+    cout << "L.addFirst(""df"")" << endl;
+    cout << "L.addLast(""md"")" << endl;
+    L.addFirst("df");
+    L.addLast("md");
+    cout << "L:" << endl;
+    L.print();
+
+    cout << "L.removeFirst()" << endl;
+    L.removeFirst();
+    cout << "L:" << endl;
+    L.print();
+
+    cout << "L.first(): " << L.first() << endl;
+    cout << "L.last(): " << L.last() << endl;
+
+    cout << "L.empty()" << L.empty() << endl;
+
+    L.~StringLinkedList();
+    cout << "L.~StringLinkedList()" << endl;
+    cout << "L:" << endl;
+    L.print();
     return 0;
 }

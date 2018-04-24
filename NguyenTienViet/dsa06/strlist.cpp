@@ -9,7 +9,9 @@ StringLinkedList::StringLinkedList(){
     tail = nullptr;
 }
 
-StringLinkedList::StringLinkedList(char * filename){
+StringLinkedList::StringLinkedList(char * filename)
+: head(nullptr), tail(nullptr)
+{
     fstream f;
     f.open(filename);
 
@@ -23,11 +25,14 @@ StringLinkedList::StringLinkedList(char * filename){
 }
 
 StringLinkedList::~StringLinkedList(){
-
+    while(!(empty())){
+        removeFirst();
+        cout << "ok";
+    }
 };
 
 bool StringLinkedList::empty() const{
-    return (head);
+    return (!head);
 };
 const string& StringLinkedList::first() const{
     return head->data;
