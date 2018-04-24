@@ -7,20 +7,20 @@ public:
     ArrayList() {
         last = 0;
     }
-    bool empty() {
-        return last == 0? true : false;
+    bool empty() const {
+        return last == 0;
     }
-    int length() {
+    int length() const {
         return last;
     }
-    void insert(int x, int i) {
+    void insert(const int x, int i) {
         for(int j = last; j > i; j--) {
             element[j] = element[j-1];
         }
         element[i] = x;
         last++;
     }
-    void append(int x) {
+    void append(const int x) {
         element[last] = x;
         last++;
     }
@@ -30,10 +30,12 @@ public:
         }
         last--;
     }
-    int& at(int i) {
-        return element[i];
+    int& at(int i) const {
+        int x;
+        x = element[i];
+        return x;
     }
-    void print() {
+    void print() const {
         cout << "A = ( ";
         for(int i = 0; i < last; i++) {
             cout << element[i] << " ";

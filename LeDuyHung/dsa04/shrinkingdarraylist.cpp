@@ -12,9 +12,8 @@ class ShrinkingDArrayList:public DArrayList {
         }
         ~ ShrinkingDArrayList() {
             delete element;
-            cout << "\nMemory released!" << endl;
         }
-        void ShrinkToFit(){
+        void ShrinkToFit() {
             if(last + 1 < size){
                 size = last + 1;
                 int *p = new int[size];
