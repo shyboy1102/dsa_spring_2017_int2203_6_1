@@ -10,16 +10,14 @@ void quicksortleft(int arr[] , int s , int e){
         return;
 
     while(i<=j){
-        if(arr[i]<pivot){
+        if(arr[i]<=pivot){
             i++;
         }
-        if(arr[j]>pivot){
+        if(arr[j]>=pivot){
             j--;
         }
         if(i<=j){
             swap(arr[i],arr[j]);
-             i++;
-             j--;
         }
     }
     swap(arr[s],arr[j]);
@@ -34,8 +32,25 @@ void print(int A[], int size)
     cout << A[i] << "  ";
 }
 int main(){
-    int arr[] = {12, 11, 13, 5, 6, 7 , 13 , 8, 9};
-    int s = sizeof(arr)/sizeof(arr[0]);
-    quicksortleft(arr,0,8);
+    vector<int> k;
+    ifstream input;
+    input.open("input.txt");
+    if(input.is_open()){
+        while (!input.eof()){
+            string tmp;
+            input >> tmp;
+            k.push_back(atoi(tmp.c_str()));
+        }
+    }
+
+    int arr[k.size()];
+    int s = k.size();
+    for(int i = 0 ; i < k.size(); i++){
+        arr[i] = k[i];
+    }
+    print(arr,s);
+    cout << endl;
+    cout<< "sorted:" ;
+    quicksortleft(arr,0,s-1);
     print(arr,s);
 }
