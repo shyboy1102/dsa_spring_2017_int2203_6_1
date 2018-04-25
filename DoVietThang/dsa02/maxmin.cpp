@@ -6,10 +6,10 @@ int main(){
     int n,i,max,min,tmax,tmin;
     int a[100];
 
-    cout << "nhap n:" << endl;
+    cout << "Nhap n = " ;
     cin >> n;
 
-    cout << "nhap lan luot day so: " << endl;
+    cout << "Nhap lan luot day so: " << endl;
     for(i = 0; i < n; i++){
         cin >> a[i];
     }

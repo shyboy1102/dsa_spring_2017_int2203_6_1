@@ -22,18 +22,19 @@ class DArrayList {
             }
             return *this;
         }
-        bool empty() {
-            return (element == NULL)? true : false;
+        bool empty() const {
+            return element == NULL;
         }
-        int getsize() {
+        int getsize() const {
             return size;
         }
-        int count() {
+        int count() const {
             return last + 1;
         }
-        int& at(int i) {
+        int& at(int i) const {
             if(0 <= i && i <= last) {
-                return element[i];
+                int x = element[i];
+                return x;
             }
         }
         void insert(int i, int x) {
@@ -70,7 +71,7 @@ class DArrayList {
                 }
             }
         }
-        void append(int x) {
+        void append(const int x) {
             if(last + 1 < size) {
                 element[last+1] = x;
                 last++;
@@ -87,7 +88,7 @@ class DArrayList {
                 element = p;
             }
         }
-        void del(int i) {
+        void del(const int i) {
             if(i < 0 || i > last) {
                 cout << "invalid input" << endl;
             }
