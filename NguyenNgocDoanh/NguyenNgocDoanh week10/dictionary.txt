@@ -1,0 +1,7 @@
+strategy 1
+stricky 2
+outline 3
+outlined 4
+subroutine 5
+appropriate 6
+appropriate 7
