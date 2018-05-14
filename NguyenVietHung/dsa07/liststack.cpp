@@ -26,9 +26,7 @@ class ListStack{
 		string itoa(int i); // ham tra ve kieu string cua so nguyen i
 };
 
-
 ListStack::ListStack():node(nullptr),n(0) {
-
 }
 
 int ListStack::size() const{
@@ -110,7 +108,6 @@ int main(){
 	ls->pop();
 	cout << "pop() : ";
 	cout <<"top() = " << ls->top() << endl;
-
 	ListStack * ls1 = new ListStack();
 	int i = 100;
 	cout << i << "(10) = " << ls1->decimalToBinary(i) << "(2)" << endl;

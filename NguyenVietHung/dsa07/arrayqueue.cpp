@@ -1,7 +1,5 @@
 #include <iostream>
-
 using namespace std;
-
 #define INIT_CAPACITY 2
 
 class EmptyQueueException{
@@ -97,27 +95,21 @@ int ArrayQueue::dequeue() throw (EmptyQueueException) {
 
 int main() {
     ArrayQueue myqueue;
-
     myqueue.enqueue(1);
     myqueue.enqueue(2);
     myqueue.enqueue(3);
-
     myqueue.print();
-
     cout << myqueue.front() << endl;
     cout << myqueue.size() << endl;
-
     myqueue.dequeue();
     myqueue.dequeue();
     myqueue.dequeue();
-
+    
     try {
         myqueue.dequeue();
     } catch(EmptyQueueException ex) {
         cout << ex.getMessage() << endl;
     }
-
     cout << (myqueue.isEmpty() ? "true" : "false") << endl;
-
     return 0;
 }

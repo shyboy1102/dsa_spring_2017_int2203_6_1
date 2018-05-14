@@ -1,7 +1,6 @@
 #include<iostream>
 #include<string>
 #include<stack>
-
 using namespace std;
 
 bool checkParenMatch(string expr){
@@ -11,13 +10,11 @@ bool checkParenMatch(string expr){
     char c;
     for(int i = 0; i < expr.length(); i++){
         c = expr.at(i);
-        if(open.find_first_of(c,0) != string::npos){
+        if(open.find_first_of(c,0) != string::npos)
             myStack.push(expr.at(i));
-        }
         else{
-            if(open.find_first_of(myStack.top(),0) == close.find_first_of(c,0)){
+            if(open.find_first_of(myStack.top(),0) == close.find_first_of(c,0))
                 myStack.pop();
-            }
             else return 0;
         }
     }
