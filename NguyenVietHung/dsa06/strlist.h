@@ -1,8 +1,6 @@
 #pragma once
 #include<string>
-
 using namespace std;
-
 // Lop StringNode
 // bieu dien mot phan tu trong danh sach lien ket StringLinkedList
 class StringNode {
@@ -28,7 +26,6 @@ public:
     const string& last() const; // lay xau luu trong phan tu cuoi cung
     void addLast(const string & e); // them vao cuoi DS
     void print() const; // in toan bo DS
-
 private:
     StringNode * head; // con tro toi phan tu dau DS
     StringNode * tail; // con tro toi phan tu cuoi DS
